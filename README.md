@@ -1,0 +1,1 @@
+# smart-speaker-esp32-s2
