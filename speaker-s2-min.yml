@@ -11,8 +11,7 @@ esp32:
 logger:
 
 api:
-  encryption:
-    key: "uLjpY0Z3zSEdBm1PJk6pnJFnAEAfAMa5wcO7iN0SWiY="
+
 
 ota:
   - platform: esphome
@@ -20,9 +19,7 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-  ap:
-    ssid: speaker-s2-mini Fallback Hotspot
-    password: "hq4CgNXw73mQ"
+
 
 psram:
   mode: quad
