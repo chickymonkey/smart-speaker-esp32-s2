@@ -1,5 +1,6 @@
-# Board: Deneyap Mini
-# Definition: definitions/boards/deneyapmini/manifest.yaml
+#board info: https://www.espboards.dev/esp32/lolin-s2-mini/
+# Audio board: GY-PCM5102 I2S Player Module
+# PINs VIN, GND, LRCK, DIN, BCK SCK on PCM aligned to PINs Vbus, GND, 16, 18, 33, 35 on ESP32 S2 and soldered.
 
 esphome:
   name: speaker-s2-mini
