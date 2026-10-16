@@ -4,9 +4,12 @@ A small Wi-Fi smart speaker built from an ESP32-S2 mini and a PCM5102 I2S DAC bo
 
 ## Hardware
 
+Note: choose the PSRAM version, which is important for the sendspin
+
+
 | Part | Description |
 | --- | --- |
-| Microcontroller | [ESP32-S2 mini (LOLIN S2 mini)](https://www.espboards.dev/esp32/lolin-s2-mini/) |
+| Microcontroller | [ESP32-S2 mini (LOLIN S2 mini with 2MB PSRAM)](https://www.espboards.dev/esp32/lolin-s2-mini/) |
 | Audio board | PCM5102 I2S DAC with 3.5 mm jack |
 
 ### PCM5102 audio board
