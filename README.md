@@ -30,20 +30,7 @@ A small Wi-Fi smart speaker built from an ESP32-S2 mini and a PCM5102 I2S DAC bo
 
 ## ESPHome pin configuration
 
-Pins from the table above:
-
-```yaml
-i2s_audio:
-  i2s_lrclk_pin: GPIO16
-  i2s_bclk_pin: GPIO33
-  # i2s_mclk_pin is intentionally not set (see notes)
-
-speaker:
-  - platform: i2s_audio
-    id: speaker_id
-    dac_type: external
-    i2s_dout_pin: GPIO18
-```
+Two versions: web audio and sendspin in file speaker-s2-min.yml and speaker-s2-min-sendspin.yml
 
 ## Notes
 
