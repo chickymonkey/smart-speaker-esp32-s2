@@ -1,14 +1,53 @@
 # smart-speaker-esp32-s2
 
-ESP32 S2 supermini Board: https://www.espboards.dev/esp32/lolin-s2-mini/
+A small Wi-Fi smart speaker built from an ESP32-S2 mini and a PCM5102 I2S DAC board with a 3.5 mm audio jack.
 
-Audio board with 3.5mm jack: PCM5102
+## Hardware
 
-# Pin MAP
+| Part | Description |
+| --- | --- |
+| Microcontroller | [ESP32-S2 mini (LOLIN S2 mini)](https://www.espboards.dev/esp32/lolin-s2-mini/) |
+| Audio board | PCM5102 I2S DAC with 3.5 mm jack |
 
-VIN VBUS
-GND GND
-LRCK GPIO16
-DIN GPIO18
-BCK GPIO33
-SCK GPIO35
+### PCM5102 audio board
+
+![PCM5102 audio board](PCM5102.jpg)
+
+## Pin map
+
+| PCM5102 pin | ESP32-S2 mini pin |
+| --- | --- |
+| VIN | VBUS |
+| GND | GND |
+| LRCK | GPIO16 |
+| DIN | GPIO18 |
+| BCK | GPIO33 |
+| SCK | GPIO35 |
+
+## Soldered result
+
+![Soldered boards](solderred.webp)
+
+## ESPHome pin configuration
+
+Pins from the table above:
+
+```yaml
+i2s_audio:
+  i2s_lrclk_pin: GPIO16
+  i2s_bclk_pin: GPIO33
+  # i2s_mclk_pin is intentionally not set (see notes)
+
+speaker:
+  - platform: i2s_audio
+    id: speaker_id
+    dac_type: external
+    i2s_dout_pin: GPIO18
+```
+
+## Notes
+
+- **SCK / MCLK:** the PCM5102 generates its own clock from BCK, so do not configure `i2s_mclk_pin` on GPIO35. Driving it caused constant background noise.
+- **Noise when touching the board:** a floating SCK pin acts as an antenna. If you hear crackling or interference that changes when you move your hand near the DAC, tie SCK to GND (solder pad or wire) so it is held at a fixed level.
+- **Jack strain:** the board is held by its solder joints, so plugging in the 3.5 mm jack can flex the wires. Fix the DAC board with a standoff, glue or foam tape, or put both boards in a case.
+- **Power:** VIN is connected to VBUS (5 V from USB), which suits boards with an on-board regulator.
